@@ -95,7 +95,7 @@
                         <!--begin::Stats-->
                         <div class="d-flex align-items-center mb-1">
                             <!--begin::Amount-->
-                            <a href="http://dashboard.mitratel.co.id:8088/" target="_blank" class="fs-6x fw-bold text-hover-danger text-white me-2">Dashboard DWH</a>
+                            <a href="{{ url('/dwh/status_airflow') }}" class="fs-4x fw-bold text-hover-danger text-white me-2">Status DWH</a>
                             <!--end::Amount-->
                         </div>
                         <!--end::Stats-->
@@ -104,7 +104,7 @@
                     </div>
                     <!--end::Block-->
                     <!--begin::Chart-->
-                    <a href="http://dashboard.mitratel.co.id:8088/" target="_blank" class="btn btn-sm btn-text-white bg-white bg-opacity-10" style="border: 1px solid rgba(255, 255, 255, 0.20)">Cek Dashboard</a>
+                    <a href="{{ url('/dwh/status_airflow') }}" class="btn btn-sm btn-text-white bg-white bg-opacity-10" style="border: 1px solid rgba(255, 255, 255, 0.20)">Cek Status</a>
                     <!--end::Chart-->
                 </div>
                 <!--end::Wrapper-->
@@ -146,10 +146,10 @@
                 <!--begin::Item-->
                 <div class="d-flex flex-stack">
                     <!--begin::Title-->
-                    <a href="http://dashboard.mitratel.co.id:8088/" target="_blank" class="text-danger opacity-75-hover fs-6 fw-semibold">Apache Superset</a>
+                    <a href="http://dashboard.mitratel.co.id" target="_blank" class="text-danger opacity-75-hover fs-6 fw-semibold">Apache Superset</a>
                     <!--end::Title-->
                     <!--begin::Action-->
-                    <a href="http://dashboard.mitratel.co.id:8088/" target="_blank" class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-danger justify-content-end">
+                    <a href="http://dashboard.mitratel.co.id" target="_blank" class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-danger justify-content-end">
                         <i class="ki-outline ki-exit-right-corner fs-2"></i>
                     </a>
                     <!--end::Action-->

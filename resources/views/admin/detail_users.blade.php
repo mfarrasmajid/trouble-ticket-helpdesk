@@ -164,7 +164,7 @@
                             <div class="mb-5">
                                 <!--begin::Switch-->
                                 <label class="form-check form-switch form-check-custom form-check-solid">
-                                    <input class="form-check-input" name="notifikasi" type="checkbox" value="1" @if (isset($data['id'])) @if ($data['u']->status_active) checked="checked" @endif @else checked="checked" @endif/>
+                                    <input class="form-check-input" name="notifikasi" type="checkbox" value="1" @if (isset($data['id'])) @if ($data['u']->notifikasi) checked="checked" @endif @else checked="checked" @endif/>
                                     <span class="form-check-label fw-bold text-muted">
                                         Notifikasi
                                     </span>

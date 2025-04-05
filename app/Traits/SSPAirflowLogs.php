@@ -2,94 +2,94 @@
 
 namespace App\Traits;
 use App\Classes\SSP;
+use DB;
 
-trait SSPManageUsers {
+trait SSPAirflowLogs {
 
-    public function list_manage_users()
+    public function list_airflow_logs($kategori)
     {
+        $get_date_modifier = DB::table('date_modifier')->select('*')->get()->first();
         // DB table to use
-        $table = "(
-            SELECT * FROM users
-            ) temp";
+        $date = new \DateTime();
+        $now_date = $date->format('Y-m-d');
+        $date->modify($get_date_modifier->modifier);
+        $get_date = $date->format('Y-m-d');
+        $table = "(SELECT type_table, type, start_time, table_airflow, dag_name, success, pending, failed FROM (
+            SELECT 
+                DISTINCT att.table_airflow,
+                att.type_table, DATE(al.start_time) as start_time, al.dag_name, al.type,
+                COUNT(*) FILTER (WHERE al.status = 'success') AS success,
+                COUNT(*) FILTER (WHERE al.status = 'pending') AS pending,
+                COUNT(*) FILTER (WHERE al.status = 'failed') AS failed
+            FROM airflow_table att
+            LEFT JOIN airflow_logs al
+                ON al.dag_name = att.table_airflow
+            WHERE ((DATE(al.start_time) >= '$get_date' AND DATE(al.start_time) <= '$now_date') OR DATE(al.start_time) IS NULL) AND att.type_table = '$kategori'
+            GROUP BY att.table_airflow, att.type_table, DATE(al.start_time), al.dag_name, al.type
+            ) t
+        ) temp";
 
         // Table's primary key
-        $primaryKey = 'id';
+        $primaryKey = 'table_airflow';
 
         $columns = array();
         $i = 0;
-        $columns[] = array( 'db' => 'id', 'dt' => $i, 
+        $columns[] = array( 'db' => 'table_airflow', 'dt' => $i, 
                             'formatter'=> function($value, $model){
                                 $array = (array)$model;
                                 return $value;
                             }
                         );
         $i++;
-        $columns[] = array( 'db' => 'nik_tg', 'dt' => $i, 
+        $columns[] = array( 'db' => 'table_airflow', 'dt' => $i, 
                 'formatter'=> function($value, $model){
                     $array = (array)$model;
                     return $value;
                 }
             );
         $i++;
-        $columns[] = array( 'db' => 'name', 'dt' => $i, 
+        $columns[] = array( 'db' => 'start_time', 'dt' => $i, 
                 'formatter'=> function($value, $model){
                     $array = (array)$model;
                     return $value;
                 }
             );
         $i++;
-        $columns[] = array( 'db' => 'privilege', 'dt' => $i, 
+        $columns[] = array( 'db' => 'type', 'dt' => $i, 
                 'formatter'=> function($value, $model){
                     $array = (array)$model;
                     return $value;
                 }
             );
         $i++;
-        $columns[] = array( 'db' => 'email', 'dt' => $i, 
+        $columns[] = array( 'db' => 'success', 'dt' => $i, 
                 'formatter'=> function($value, $model){
                     $array = (array)$model;
                     return $value;
                 }
             );
         $i++;
-        $columns[] = array( 'db' => 'nomor_hp', 'dt' => $i, 
+        $columns[] = array( 'db' => 'pending', 'dt' => $i, 
                 'formatter'=> function($value, $model){
                     $array = (array)$model;
                     return $value;
                 }
             );
         $i++;
-        $columns[] = array( 'db' => 'notifikasi', 'dt' => $i, 
-                'formatter'=> function($value, $model){
-                    $array = (array)$model;
-                    if ($value){
-                        return "<span class='badge badge-sm badge-primary'>Aktif</span>";
-                    }
-                    else {
-                        return "<span class='badge badge-sm badge-secondary'>Tidak Aktif</span>";
-                    }
-                }
-            );
-        $i++;
-        $columns[] = array( 'db' => 'status_active', 'dt' => $i, 
-                'formatter'=> function($value, $model){
-                    $array = (array)$model;
-                    if ($value){
-                        return "<span class='badge badge-sm badge-primary'>Aktif</span>";
-                    }
-                    else {
-                        return "<span class='badge badge-sm badge-secondary'>Tidak Aktif</span>";
-                    }
-                }
-            );
-        $i++;
-        $columns[] = array( 'db' => 'id', 'dt' => $i, 
+        $columns[] = array( 'db' => 'failed', 'dt' => $i, 
                 'formatter'=> function($value, $model){
                     $array = (array)$model;
                     return $value;
                 }
             );
-    
+        $i++;
+        $columns[] = array( 'db' => 'dag_name', 'dt' => $i, 
+                'formatter'=> function($value, $model){
+                    $array = (array)$model;
+                    return $value;
+                }
+            );
+        $i++;
 
         // SQL server connection information
         $sql_details = array(

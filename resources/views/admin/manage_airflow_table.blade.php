@@ -151,7 +151,7 @@
           data: {
             _token : $("input[name='_token']").val()
           },
-          type: 'GET',
+          type: 'POST',
         },
         order: [2, 'asc'],
         dom:

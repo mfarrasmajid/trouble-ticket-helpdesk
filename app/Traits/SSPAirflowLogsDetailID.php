@@ -3,21 +3,14 @@
 namespace App\Traits;
 use App\Classes\SSP;
 
-trait SSPDWHLog {
+trait SSPAirflowLogsDetailID {
 
-    public function list_dwh_log()
+    public function list_airflow_logs_detail_id($mark)
     {
-        // DB table to use
         $table = "(
-            SELECT 
-                DISTINCT mark, type, DATE(start_time),
-                (SELECT COUNT(id) FROM airflow_logs WHERE dag_name = al.dag_name AND status = 'success' AND DATE(start_time) = DATE(al.start_time)) success,
-                (SELECT COUNT(id) FROM airflow_logs WHERE dag_name = al.dag_name AND status = 'pending' AND DATE(start_time) = DATE(al.start_time)) pending,
-                (SELECT COUNT(id) FROM airflow_logs WHERE dag_name = al.dag_name AND status = 'failed' AND DATE(start_time) = DATE(al.start_time)) failed,
-            FROM airflow_logs al
-            ORDER BY al.start_time DESC
-            GROUP BY al.mark, al.type
-            ) temp";
+            SELECT *
+            FROM airflow_logs WHERE mark = '$mark'
+        ) temp";
 
         // Table's primary key
         $primaryKey = 'id';
@@ -31,21 +24,56 @@ trait SSPDWHLog {
                             }
                         );
         $i++;
-        $columns[] = array( 'db' => 'table', 'dt' => $i, 
+        $columns[] = array( 'db' => 'mark', 'dt' => $i, 
                 'formatter'=> function($value, $model){
                     $array = (array)$model;
                     return $value;
                 }
             );
         $i++;
-        $columns[] = array( 'db' => 'deskripsi', 'dt' => $i, 
+        $columns[] = array( 'db' => 'dag_name', 'dt' => $i, 
                 'formatter'=> function($value, $model){
                     $array = (array)$model;
                     return $value;
                 }
             );
         $i++;
-        $columns[] = array( 'db' => 'id', 'dt' => $i, 
+        $columns[] = array( 'db' => 'type', 'dt' => $i, 
+                'formatter'=> function($value, $model){
+                    $array = (array)$model;
+                    return $value;
+                }
+            );
+        $i++;
+        $columns[] = array( 'db' => 'kategori', 'dt' => $i, 
+                'formatter'=> function($value, $model){
+                    $array = (array)$model;
+                    return $value;
+                }
+            );
+        $i++;
+        $columns[] = array( 'db' => 'status', 'dt' => $i, 
+                'formatter'=> function($value, $model){
+                    $array = (array)$model;
+                    return $value;
+                }
+            );
+        $i++;
+        $columns[] = array( 'db' => 'start_time', 'dt' => $i, 
+                'formatter'=> function($value, $model){
+                    $array = (array)$model;
+                    return $value;
+                }
+            );
+        $i++;
+        $columns[] = array( 'db' => 'end_time', 'dt' => $i, 
+                'formatter'=> function($value, $model){
+                    $array = (array)$model;
+                    return $value;
+                }
+            );
+        $i++;
+        $columns[] = array( 'db' => 'error_message', 'dt' => $i, 
                 'formatter'=> function($value, $model){
                     $array = (array)$model;
                     return $value;
@@ -69,7 +97,7 @@ trait SSPDWHLog {
         */
                 
         return json_encode(
-            SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
+            SSP::simple( $_POST, $sql_details, $table, $primaryKey, $columns )
         );
     }
 }

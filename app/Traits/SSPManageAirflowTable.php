@@ -62,7 +62,7 @@ trait SSPManageAirflowTable {
         */
                 
         return json_encode(
-            SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
+            SSP::simple( $_POST, $sql_details, $table, $primaryKey, $columns )
         );
     }
 }
