@@ -58,6 +58,9 @@ class AlertDWH extends Command
                                     WHERE start_time >= '$get_date' 
                                         AND (status = 'failed' OR status = 'pending') 
                                         AND kategori = 'Data Mart'");
+        $total_table_run = DB::select("SELECT COUNT( DISTINCT dag_name) as count
+                                        FROM airflow_logs
+                                        WHERE start_time >= '$get_date'");
 
         $url = \Config::get('values.WHATSAPP_API_URL');
         $user = \Config::get('values.WHATSAPP_API_USER');
@@ -136,6 +139,7 @@ Terdapat ".count($error_dm)." error dalam penarikan data mart:
 ";
                 }
             }
+            $message .= "TOTAL TABLE DITARIK: ".$total_table_run[0]->count;
             $nomor = $u->nomor_hp;
             $response = Http::timeout(10)->withHeaders([
                 'Authorization' => 'Bearer '.$token
