@@ -39,7 +39,7 @@
             <div class="d-flex flex-column align-items-between">
                 <div class="card bg-hover-danger bg-opacity-75 bg-white border-0 mb-5 ms-5 me-5 me-lg-0" >
                     <div class="card-body p-0 text-center">
-                        <a href="{{ url('/logs/dashboard')}}">
+                        <a href="{{ url('/dwh/dashboard')}}">
                             <div class="d-flex p-5 flex-column-fluid justify-content-center">
                                 <img src="{{ asset('assets/_dwh/logo-airflow.png')}}" alt="Logo AirFlow" class="h-50px">
                             </div>
