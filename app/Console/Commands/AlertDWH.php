@@ -41,7 +41,7 @@ class AlertDWH extends Command
     {
         $date = new \DateTime();
         $now_date = $date->format('Y-m-d H:i:s');
-        $date->modify('-3 hours');
+        $date->modify('-6 hours');
         $get_date = $date->format('Y-m-d H:i:s');
         $error_dl = DB::select("SELECT *
                                     FROM airflow_logs
@@ -58,9 +58,27 @@ class AlertDWH extends Command
                                     WHERE start_time >= '$get_date' 
                                         AND (status = 'failed' OR status = 'pending') 
                                         AND kategori = 'Data Mart'");
-        $total_table_run = DB::select("SELECT COUNT( DISTINCT dag_name) as count
+        $total_dl_run = DB::select("SELECT COUNT( DISTINCT dag_name) as count
                                         FROM airflow_logs
-                                        WHERE start_time >= '$get_date'");
+                                        WHERE start_time >= '$get_date' 
+                                            AND kategori = 'Data Lake'");
+        $total_dwh_run = DB::select("SELECT COUNT( DISTINCT dag_name) as count
+                                        FROM airflow_logs
+                                        WHERE start_time >= '$get_date' 
+                                            AND kategori = 'Data WareHouse'");
+        $total_dm_run = DB::select("SELECT COUNT( DISTINCT dag_name) as count
+                                        FROM airflow_logs
+                                        WHERE start_time >= '$get_date' 
+                                            AND kategori = 'Data Mart'");
+        $total_dl_table = DB::select("SELECT COUNT( DISTINCT table_airflow) as count
+                                        FROM airflow_table
+                                        WHERE type_table = 'Data Lake'");
+        $total_dwh_table = DB::select("SELECT COUNT( DISTINCT table_airflow) as count
+                                        FROM airflow_table
+                                        WHERE type_table = 'Data WareHouse'");
+        $total_dm_table = DB::select("SELECT COUNT( DISTINCT table_airflow) as count
+                                        FROM airflow_table
+                                        WHERE type_table = 'Data Mart'");
 
         $url = \Config::get('values.WHATSAPP_API_URL');
         $user = \Config::get('values.WHATSAPP_API_USER');
@@ -97,6 +115,9 @@ Terdapat ".count($error_dl)." error dalam penarikan data lake:
 ";
                 }
             }
+            $message .= "TOTAL TABLE DATALAKE DITARIK : ".$total_dl_run[0]->count." dari ".$total_dl_table[0]->count."
+            
+";
             if (count($error_dwh) == 0){
                 $message .= "DATA WAREHOUSE:
 *Semua penarikan berhasil*
@@ -118,6 +139,9 @@ Terdapat ".count($error_dwh)." error dalam penarikan data warehouse:
 ";
                 }
             }
+            $message .= "TOTAL TABLE DATAWAREHOUSE DITARIK : ".$total_dwh_run[0]->count." dari ".$total_dwh_table[0]->count."
+            
+";
             if (count($error_dm) == 0){
                 $message .= "DATA MART:
 *Semua penarikan berhasil*
@@ -139,7 +163,9 @@ Terdapat ".count($error_dm)." error dalam penarikan data mart:
 ";
                 }
             }
-            $message .= "TOTAL TABLE DITARIK: ".$total_table_run[0]->count;
+            $message .= "TOTAL TABLE DATAMART DITARIK : ".$total_dm_run[0]->count." dari ".$total_dm_table[0]->count."
+
+";
             $nomor = $u->nomor_hp;
             $response = Http::timeout(10)->withHeaders([
                 'Authorization' => 'Bearer '.$token
