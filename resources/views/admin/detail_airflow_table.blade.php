@@ -115,6 +115,17 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-5">
+                                <label for="deskripsi" class="form-label">Type Table</label>
+                                <select required class="form-select form-select-solid" data-control="select2" data-placeholder="Pilih Type Table" name="type_table">
+                                    <option value=""></option>
+                                    <option value="Data Lake" @if(isset($data['id'])) @if ($data['u']->type_table == "Data Lake") selected @endif @endif>Data Lake</option>
+                                    <option value="Data WareHouse" @if(isset($data['id'])) @if ($data['u']->type_table == "Data WareHouse") selected @endif @endif>Data WareHouse</option>
+                                    <option value="Data Mart" @if(isset($data['id'])) @if ($data['u']->type_table == "Data Mart") selected @endif @endif>Data Mart</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-5">
                                 <label for="deskripsi" class="form-label">Deskripsi</label>
                                 <input type="text" required class="form-control form-control-solid" name="deskripsi" @if (isset($data['id'])) value="{{ $data['u']->deskripsi }}" @endif>
                             </div>

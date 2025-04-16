@@ -31,6 +31,13 @@ trait SSPManageAirflowTable {
                 }
             );
         $i++;
+        $columns[] = array( 'db' => 'type_table', 'dt' => $i, 
+                'formatter'=> function($value, $model){
+                    $array = (array)$model;
+                    return $value;
+                }
+            );
+        $i++;
         $columns[] = array( 'db' => 'deskripsi', 'dt' => $i, 
                 'formatter'=> function($value, $model){
                     $array = (array)$model;

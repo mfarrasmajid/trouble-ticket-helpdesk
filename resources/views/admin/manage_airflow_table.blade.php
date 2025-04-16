@@ -90,6 +90,7 @@
                         <tr>
                             <th style="min-width: 30px; font-weight:600;">#</th>
                             <th style="min-width: 80px; font-weight:600;">Table</th>
+                            <th style="min-width: 80px; font-weight:600;">Type Table</th>
                             <th style="min-width: 200px; font-weight:600;">Deskripsi</th>
                             <th style="min-width: 80px; font-weight:600;">Actions</th>
                         </tr>
@@ -98,6 +99,7 @@
                         <tr>
                             <th style="min-width: 30px; font-weight:600;">#</th>
                             <th style="min-width: 80px; font-weight:600;">Table</th>
+                            <th style="min-width: 80px; font-weight:600;">Type Table</th>
                             <th style="min-width: 200px; font-weight:600;">Deskripsi</th>
                             <th style="min-width: 80px; font-weight:600;">Actions</th>
                         </tr>

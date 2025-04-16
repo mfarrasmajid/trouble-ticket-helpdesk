@@ -161,6 +161,7 @@ class AdminController extends Controller
             $update = DB::table('airflow_table')->insertGetId([
                                             'table_airflow' => $input['table'],
                                             'deskripsi' => $input['deskripsi'],
+                                            'type_table' => $input['type_table'],
                                             'created_at' => $datetime,
                                             'created_by' => $nik_tg,
                                         ]);
@@ -171,6 +172,7 @@ class AdminController extends Controller
                                         ->update([
                                             'table_airflow' => $input['table'],
                                             'deskripsi' => $input['deskripsi'],
+                                            'type_table' => $input['type_table'],
                                             'updated_at' => $datetime,
                                             'updated_by' => $nik_tg,
                                         ]);
