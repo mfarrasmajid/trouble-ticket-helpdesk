@@ -94,9 +94,9 @@ class DWHController extends Controller
                     $status = "<span class='badge badge-sm badge-success'>All Success</span>";
                 } else if ($d->success > 0){
                     if ($d->success > ($d->failed + $d->pending)){
-                        $status = "<span class='badge badge-sm badge-success'>Mostly Success</span><br>";
+                        $status = "<span class='badge badge-sm badge-success'>Mostly Success</span><br>".$status;
                     } else {
-                        $status = "<span class='badge badge-sm badge-success'>Partial Success</span><br>";
+                        $status = "<span class='badge badge-sm badge-success'>Partial Success</span><br>".$status;
                     }
                 } else if ($status == ""){
                     $status = "<span class='badge badge-sm badge-secondary'>No Status</span>";
