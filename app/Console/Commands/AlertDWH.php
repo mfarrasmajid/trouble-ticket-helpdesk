@@ -113,6 +113,7 @@ Terdapat ".count($error_dl)." error dalam penarikan data lake:
 - Error Message: ".$er->error_message."
 
 ";
+                    if ($c > 2) break;
                 }
             }
             $message .= "TOTAL TABLE DATALAKE DITARIK : ".$total_dl_run[0]->count." dari ".$total_dl_table[0]->count."
@@ -137,6 +138,7 @@ Terdapat ".count($error_dwh)." error dalam penarikan data warehouse:
 - Error Message: ".$er->error_message."
 
 ";
+                    if ($c > 2) break;
                 }
             }
             $message .= "TOTAL TABLE DATAWAREHOUSE DITARIK : ".$total_dwh_run[0]->count." dari ".$total_dwh_table[0]->count."
@@ -161,6 +163,7 @@ Terdapat ".count($error_dm)." error dalam penarikan data mart:
 - Error Message: ".$er->error_message."
 
 ";
+                    if ($c > 2) break;
                 }
             }
             $message .= "TOTAL TABLE DATAMART DITARIK : ".$total_dm_run[0]->count." dari ".$total_dm_table[0]->count."
