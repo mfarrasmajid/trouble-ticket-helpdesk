@@ -139,6 +139,54 @@
             </div>
             <!--end:Menu item-->
             @endif
+            <!--begin:Menu item-->
+            <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="right-start" class="menu-item  @if ($path_current[0] == 'helpdesk') here show @endif py-2">
+                @if ($path_current[0] == 'helpdesk')
+                <!--begin:Menu link-->
+                <span class="menu-link menu-center theme-light-show bg-white">
+                    <img src="{{ asset('assets/_dwh/icon.png')}}" class="mh-25px">
+                </span>
+                <span class="menu-link menu-center theme-dark-show bg-danger">
+                    <img src="{{ asset('assets/_dwh/icon-white.png')}}" class="mh-25px">
+                </span>
+                <!--end:Menu link-->
+                @else
+                <!--begin:Menu link-->
+                <span class="menu-link menu-center theme-light-show bg-secondary bg-hover-white">
+                    <img src="{{ asset('assets/_dwh/icon-gray.png')}}" class=" mh-25px">
+                </span>
+                <span class="menu-link menu-center theme-dark-show bg-secondary">
+                    <img src="{{ asset('assets/_dwh/icon-white.png')}}" class="mh-25px">
+                </span>
+                <!--end:Menu link-->
+                @endif
+                <!--begin:Menu sub-->
+                <div class="menu-sub menu-sub-dropdown px-2 py-4 w-250px mh-75 overflow-auto">
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                        <!--begin:Menu content-->
+                        <div class="menu-content">
+                            <span class="menu-section fs-5 fw-bolder ps-1 py-1">Helpdesk</span>
+                        </div>
+                        <!--end:Menu content-->
+                    </div>
+                    <!--end:Menu item-->
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link @if (($path_current[0] == 'helpdesk') && ($path_current[1] == 'dashboard')) active @endif" href="{{ url('/helpdesk/dashboard') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Dashboard Helpdesk</span>
+                        </a>
+                        <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
+                </div>
+                <!--end:Menu sub-->
+            </div>
+            <!--end:Menu item-->
         </div>
         <!--end::Menu-->
     </div>
