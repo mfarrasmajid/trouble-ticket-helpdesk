@@ -22,7 +22,9 @@ Route::get('/init_send_credentials_dashboard', 'MainController@init_send_credent
 Route::get('/test_wa_notif', 'MainController@test_wa_notif');
 Route::get('/get_ip', 'MainController@get_ip');
 
-
+Route::prefix('helpdesk')->group(function () {
+    Route::get('/dashboard', 'HelpdeskController@dashboard_helpdesk')->name('dashboard_helpdesk');
+});
 Route::prefix('dwh')->group(function () {
     Route::get('/dashboard', 'DWHController@dashboard_dwh')->name('dashboard_dwh');
     Route::get('/manage_airflow_logs', 'DWHController@manage_airflow_logs')->name('manage_airflow_logs');
@@ -40,6 +42,10 @@ Route::prefix('admin')->group(function () {
     Route::post('/detail_airflow_table/{id?}', 'AdminController@submit_airflow_table');
 });
 Route::prefix('api')->group(function() {
+    Route::prefix('helpdesk')->group(function () {
+        Route::get('/get_list_trouble_ticket', 'APIController@get_list_trouble_ticket');
+        Route::post('/export_trouble_ticket', 'APIController@export_trouble_ticket');
+    });
     Route::prefix('dwh')->group(function () {
         Route::post('/get_list_airflow_logs/{kategori}', 'DWHController@get_list_airflow_logs');
         Route::post('/get_list_airflow_logs_detail/{dag_name}', 'DWHController@get_list_airflow_logs_detail');

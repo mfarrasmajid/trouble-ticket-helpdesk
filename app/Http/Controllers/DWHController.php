@@ -16,7 +16,7 @@ class DWHController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['session', 'ceklogin']);
+        $this->middleware(['session', 'ceklogin', 'cekdwh']);
     }
 
     public function get_list_airflow_logs($kategori) { return $this->list_airflow_logs($kategori); }

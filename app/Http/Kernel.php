@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'session' => \App\Http\Middleware\Session::class,
         'ceklogin' => \App\Http\Middleware\CekLogin::class,
         'cekadmin' => \App\Http\Middleware\CekAdmin::class,
+        'cekdwh' => \App\Http\Middleware\CekDWH::class,
     ];
 }

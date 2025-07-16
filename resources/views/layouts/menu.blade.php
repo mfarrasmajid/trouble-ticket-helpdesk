@@ -15,6 +15,7 @@
     <div id="kt_aside_menu_wrapper" class="app-sidebar-menu flex-grow-1 hover-scroll-y scroll-lg-ps my-5 pt-8" data-kt-scroll="true" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_app_sidebar_logo, #kt_app_sidebar_footer" data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="5px">
         <!--begin::Menu-->
         <div id="kt_aside_menu" class="menu menu-rounded menu-column menu-title-gray-600 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-semibold fs-6" data-kt-menu="true">
+            @if ((session()->get('user')->privilege == 'ADMIN') || (session()->get('user')->privilege == 'USER'))
             <!--begin:Menu item-->
             <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="right-start" class="menu-item  @if ($path_current[0] == 'dwh') here show @endif py-2">
                 @if ($path_current[0] == 'dwh')
@@ -63,6 +64,7 @@
                 <!--end:Menu sub-->
             </div>
             <!--end:Menu item-->
+            @endif
             @if (session()->get('user')->privilege == 'ADMIN')
             <!--begin:Menu item-->
             <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="right-start" class="menu-item  @if ($path_current[0] == 'admin') here show @endif py-2">
