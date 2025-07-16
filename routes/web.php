@@ -43,8 +43,8 @@ Route::prefix('admin')->group(function () {
 });
 Route::prefix('api')->group(function() {
     Route::prefix('helpdesk')->group(function () {
-        Route::get('/get_list_trouble_ticket', 'APIController@get_list_trouble_ticket');
-        Route::post('/export_trouble_ticket', 'APIController@export_trouble_ticket');
+        Route::get('/get_list_trouble_ticket', 'ApiController@get_list_trouble_ticket');
+        Route::post('/export_trouble_ticket', 'ApiController@export_trouble_ticket');
     });
     Route::prefix('dwh')->group(function () {
         Route::post('/get_list_airflow_logs/{kategori}', 'DWHController@get_list_airflow_logs');
