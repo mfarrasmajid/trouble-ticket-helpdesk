@@ -76,6 +76,23 @@ class ApiController extends Controller
             $query->orderBy($sort['colId'], $sort['sort']);
         }
 
+        if (!str_contains(session()->get('user')->privilege, 'ADMIN')){
+            $explode = explode(',', session()->get('user')->mitra_om);
+            if (count($explode) == 0){
+                $query->where('mitra_om', NULL);
+            } else {
+                $query->where(function ($q) use ($explode){
+                    foreach($explode as $key => $e){
+                        if ($key == 0){
+                            $q->where('mitra_om', $e);
+                        } else {
+                            $q->orWhere('mitra_om', $e);
+                        }
+                    }
+                });
+            }
+        }
+
         $start = intval($request->startRow ?? 0);
         $end = intval($request->endRow ?? 50);
         $limit = $end - $start;
@@ -84,7 +101,25 @@ class ApiController extends Controller
         $totalFiltered = $filteredQuery->count();
 
         // Get full count (unfiltered)
-        $totalAll = DB::connection('pgsql2')->table('mart_om_troubleticketcomp')->count();
+        $totalAll = DB::connection('pgsql2')->table('mart_om_troubleticketcomp');
+
+        if (!str_contains(session()->get('user')->privilege, 'ADMIN')){
+            $explode = explode(',', session()->get('user')->mitra_om);
+            if (count($explode) == 0){
+                $totalAll->where('mitra_om', NULL);
+            } else {
+                $totalAll->where(function ($q) use ($explode){
+                    foreach($explode as $key => $e){
+                        if ($key == 0){
+                            $q->where('mitra_om', $e);
+                        } else {
+                            $q->orWhere('mitra_om', $e);
+                        }
+                    }
+                });
+            }
+        }
+        $totalAll = $totalAll->count();
 
         $total = $query->count();
         $rows = $query->skip($start)->take($limit)->get();
@@ -162,6 +197,23 @@ class ApiController extends Controller
 
         foreach ($sortModel as $sort) {
             $query->orderBy($sort['colId'], $sort['sort']);
+        }
+
+        if (!str_contains(session()->get('user')->privilege, 'ADMIN')){
+            $explode = explode(',', session()->get('user')->mitra_om);
+            if (count($explode) == 0){
+                $query->where('mitra_om', NULL);
+            } else {
+                $query->where(function ($q) use ($explode){
+                    foreach($explode as $key => $e){
+                        if ($key == 0){
+                            $q->where('mitra_om', $e);
+                        } else {
+                            $q->orWhere('mitra_om', $e);
+                        }
+                    }
+                });
+            }
         }
 
         $headers = ["name",

@@ -94,6 +94,7 @@
                             <th style="min-width: 100px; font-weight:600;">Privilege</th>
                             <th style="min-width: 50px; font-weight:600;">Email</th>
                             <th style="min-width: 50px; font-weight:600;">Nomor HP</th>
+                            <th style="min-width: 50px; font-weight:600;">Mitra OM</th>
                             <th style="min-width: 50px; font-weight:600;">Notifikasi</th>
                             <th style="min-width: 50px; font-weight:600;">Status Active</th>
                             <th style="min-width: 80px; font-weight:600;">Actions</th>
@@ -107,6 +108,7 @@
                             <th style="min-width: 100px; font-weight:600;">Privilege</th>
                             <th style="min-width: 50px; font-weight:600;">Email</th>
                             <th style="min-width: 50px; font-weight:600;">Nomor HP</th>
+                            <th style="min-width: 50px; font-weight:600;">Mitra OM</th>
                             <th style="min-width: 50px; font-weight:600;">Notifikasi</th>
                             <th style="min-width: 50px; font-weight:600;">Status Active</th>
                             <th style="min-width: 80px; font-weight:600;">Actions</th>

@@ -59,6 +59,13 @@ trait SSPManageUsers {
                 }
             );
         $i++;
+        $columns[] = array( 'db' => 'mitra_om', 'dt' => $i, 
+                'formatter'=> function($value, $model){
+                    $array = (array)$model;
+                    return $value;
+                }
+            );
+        $i++;
         $columns[] = array( 'db' => 'notifikasi', 'dt' => $i, 
                 'formatter'=> function($value, $model){
                     $array = (array)$model;

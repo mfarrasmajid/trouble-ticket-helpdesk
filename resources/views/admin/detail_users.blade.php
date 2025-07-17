@@ -121,7 +121,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-5">
-                                <label for="password" class="form-label">Password</label>
+                                <label for="password" class="form-label">Password (default: dwhMitratel#135)</label>
                                 <input type="text" class="form-control form-control-solid" name="password" value="">
                             </div>
                         </div>
@@ -138,14 +138,32 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-5">
+                                <label for="privilege" class="form-label">Mitra OM</label>
+                                <select class="form-select form-select-solid" data-control="select2" data-placeholder="Pilih Mitra OM" name="mitra_om[]" multiple>
+                                    <option value=""></option>
+                                    @php 
+                                    if (isset($data['u'])){
+                                        $explode = explode(',', $data['u']->mitra_om);
+                                    } else {
+                                        $explode = [];
+                                    }
+                                    @endphp
+                                    @foreach($data['mitra_om'] as $m)
+                                    <option value="{{$m->mitra_om}}" @if(isset($data['id'])) @if (in_array($m->mitra_om, $explode)) selected @endif @endif>{{$m->mitra_om}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-5">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="text" required class="form-control form-control-solid" name="email" @if (isset($data['id'])) value="{{ $data['u']->email }}" @endif>
+                                <input type="text" class="form-control form-control-solid" name="email" @if (isset($data['id'])) value="{{ $data['u']->email }}" @endif>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-5">
                                 <label for="nomor_hp" class="form-label">Nomor Handphone</label>
-                                <input type="text" required class="form-control form-control-solid" name="nomor_hp" @if (isset($data['id'])) value="{{ $data['u']->nomor_hp }}" @endif>
+                                <input type="text" class="form-control form-control-solid" name="nomor_hp" @if (isset($data['id'])) value="{{ $data['u']->nomor_hp }}" @endif>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -164,7 +182,7 @@
                             <div class="mb-5">
                                 <!--begin::Switch-->
                                 <label class="form-check form-switch form-check-custom form-check-solid">
-                                    <input class="form-check-input" name="notifikasi" type="checkbox" value="1" @if (isset($data['id'])) @if ($data['u']->notifikasi) checked="checked" @endif @else checked="checked" @endif/>
+                                    <input class="form-check-input" name="notifikasi" type="checkbox" value="1" @if (isset($data['id'])) @if ($data['u']->notifikasi) checked="checked" @endif @else @endif/>
                                     <span class="form-check-label fw-bold text-muted">
                                         Notifikasi
                                     </span>

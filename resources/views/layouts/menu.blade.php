@@ -15,56 +15,6 @@
     <div id="kt_aside_menu_wrapper" class="app-sidebar-menu flex-grow-1 hover-scroll-y scroll-lg-ps my-5 pt-8" data-kt-scroll="true" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_app_sidebar_logo, #kt_app_sidebar_footer" data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="5px">
         <!--begin::Menu-->
         <div id="kt_aside_menu" class="menu menu-rounded menu-column menu-title-gray-600 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-semibold fs-6" data-kt-menu="true">
-            @if ((session()->get('user')->privilege == 'ADMIN') || (session()->get('user')->privilege == 'USER'))
-            <!--begin:Menu item-->
-            <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="right-start" class="menu-item  @if ($path_current[0] == 'dwh') here show @endif py-2">
-                @if ($path_current[0] == 'dwh')
-                <!--begin:Menu link-->
-                <span class="menu-link menu-center theme-light-show bg-white">
-                    <img src="{{ asset('assets/_dwh/icon.png')}}" class="mh-25px">
-                </span>
-                <span class="menu-link menu-center theme-dark-show bg-danger">
-                    <img src="{{ asset('assets/_dwh/icon-white.png')}}" class="mh-25px">
-                </span>
-                <!--end:Menu link-->
-                @else
-                <!--begin:Menu link-->
-                <span class="menu-link menu-center theme-light-show bg-secondary bg-hover-white">
-                    <img src="{{ asset('assets/_dwh/icon-gray.png')}}" class=" mh-25px">
-                </span>
-                <span class="menu-link menu-center theme-dark-show bg-secondary">
-                    <img src="{{ asset('assets/_dwh/icon-white.png')}}" class="mh-25px">
-                </span>
-                <!--end:Menu link-->
-                @endif
-                <!--begin:Menu sub-->
-                <div class="menu-sub menu-sub-dropdown px-2 py-4 w-250px mh-75 overflow-auto">
-                    <!--begin:Menu item-->
-                    <div class="menu-item">
-                        <!--begin:Menu content-->
-                        <div class="menu-content">
-                            <span class="menu-section fs-5 fw-bolder ps-1 py-1">DWH</span>
-                        </div>
-                        <!--end:Menu content-->
-                    </div>
-                    <!--end:Menu item-->
-                    <!--begin:Menu item-->
-                    <div class="menu-item">
-                        <!--begin:Menu link-->
-                        <a class="menu-link @if (($path_current[0] == 'dwh') && ($path_current[1] == 'dashboard')) active @endif" href="{{ url('/dwh/dashboard') }}">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
-                            </span>
-                            <span class="menu-title">Dashboard DWH</span>
-                        </a>
-                        <!--end:Menu link-->
-                    </div>
-                    <!--end:Menu item-->
-                </div>
-                <!--end:Menu sub-->
-            </div>
-            <!--end:Menu item-->
-            @endif
             @if (session()->get('user')->privilege == 'ADMIN')
             <!--begin:Menu item-->
             <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="right-start" class="menu-item  @if ($path_current[0] == 'admin') here show @endif py-2">

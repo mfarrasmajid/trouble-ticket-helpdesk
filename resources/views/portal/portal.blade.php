@@ -76,17 +76,6 @@
             </div>
         </div>    
         <div class="row g-5 mt-5 d-lg-flex d-none">
-            @if ((session()->get('user')->privilege == 'ADMIN') || (session()->get('user')->privilege == 'USER'))
-            <div class="col-lg-2">
-                <div class="card card-flush h-100">
-                    <div class="card-body px-15 pb-15 pt-10">
-                        <div class="fs-2x fw-bolder text-dark text-hover-danger mb-5">Datawarehouse</div>
-                        <img src="{{ asset('assets/_dwh/logo.png')}}" alt="Logo Mitratel" class="w-100 mb-10 d-block">
-                        <a href="{{ url('/dwh/dashboard')}}" class="btn btn-light-danger btn-sm w-100">Dashboard DWH</a>
-                    </div>
-                </div>
-            </div>
-            @endif
             @if (session()->get('user')->privilege == 'ADMIN')
             <div class="col-lg-2">
                 <div class="card card-flush h-100">
