@@ -250,6 +250,148 @@
         { field: 'sla_status', headerName: 'SLA Status', sortable: true, filter: true, minWidth: 200 },
         { field: 'mttr', headerName: 'MTTR', sortable: true, filter: true, minWidth: 200 },
         { field: 'mttr_hours', headerName: 'MTTR Hours', sortable: true, filter: true, minWidth: 200 },
+        {
+            field: 'creation',
+            headerName: 'Creation',
+            filter: 'agDateColumnFilter',
+            minWidth: 250,
+            sortable: true,
+            filterParams: {
+                browserDatePicker: true,
+                comparator: function (filterLocalDateAtMidnight, cellValue) {
+                    if (!cellValue) return -1;
+                    const cellDate = new Date(cellValue);
+                    const cellDateOnly = new Date(cellDate.getFullYear(), cellDate.getMonth(), cellDate.getDate());
+                    if (cellDateOnly < filterLocalDateAtMidnight) return -1;
+                    if (cellDateOnly > filterLocalDateAtMidnight) return 1;
+                    return 0;
+                }
+            },
+            valueFormatter: (params) => {
+                if (!params.value) return '';
+                const d = new Date(params.value);
+                return d.toLocaleDateString('en-GB') + ' ' + d.toLocaleTimeString('en-GB');
+            }
+        },
+        { field: 'tower_id', headerName: 'Tower ID', sortable: true, filter: true, minWidth: 200 },
+        { field: 'district_city', headerName: 'District City', sortable: true, filter: true, minWidth: 200 },
+        {
+            field: 'ts_need_assign',
+            headerName: 'Timestamp Need Assign',
+            filter: 'agDateColumnFilter',
+            minWidth: 250,
+            sortable: true,
+            filterParams: {
+                browserDatePicker: true,
+                comparator: function (filterLocalDateAtMidnight, cellValue) {
+                    if (!cellValue) return -1;
+                    const cellDate = new Date(cellValue);
+                    const cellDateOnly = new Date(cellDate.getFullYear(), cellDate.getMonth(), cellDate.getDate());
+                    if (cellDateOnly < filterLocalDateAtMidnight) return -1;
+                    if (cellDateOnly > filterLocalDateAtMidnight) return 1;
+                    return 0;
+                }
+            },
+            valueFormatter: (params) => {
+                if (!params.value) return '';
+                const d = new Date(params.value);
+                return d.toLocaleDateString('en-GB') + ' ' + d.toLocaleTimeString('en-GB');
+            }
+        },
+        {
+            field: 'ts_on_progress',
+            headerName: 'Timestamp On Progress',
+            filter: 'agDateColumnFilter',
+            minWidth: 250,
+            sortable: true,
+            filterParams: {
+                browserDatePicker: true,
+                comparator: function (filterLocalDateAtMidnight, cellValue) {
+                    if (!cellValue) return -1;
+                    const cellDate = new Date(cellValue);
+                    const cellDateOnly = new Date(cellDate.getFullYear(), cellDate.getMonth(), cellDate.getDate());
+                    if (cellDateOnly < filterLocalDateAtMidnight) return -1;
+                    if (cellDateOnly > filterLocalDateAtMidnight) return 1;
+                    return 0;
+                }
+            },
+            valueFormatter: (params) => {
+                if (!params.value) return '';
+                const d = new Date(params.value);
+                return d.toLocaleDateString('en-GB') + ' ' + d.toLocaleTimeString('en-GB');
+            }
+        },
+        {
+            field: 'ts_pickup',
+            headerName: 'Timestamp Pickup',
+            filter: 'agDateColumnFilter',
+            minWidth: 250,
+            sortable: true,
+            filterParams: {
+                browserDatePicker: true,
+                comparator: function (filterLocalDateAtMidnight, cellValue) {
+                    if (!cellValue) return -1;
+                    const cellDate = new Date(cellValue);
+                    const cellDateOnly = new Date(cellDate.getFullYear(), cellDate.getMonth(), cellDate.getDate());
+                    if (cellDateOnly < filterLocalDateAtMidnight) return -1;
+                    if (cellDateOnly > filterLocalDateAtMidnight) return 1;
+                    return 0;
+                }
+            },
+            valueFormatter: (params) => {
+                if (!params.value) return '';
+                const d = new Date(params.value);
+                return d.toLocaleDateString('en-GB') + ' ' + d.toLocaleTimeString('en-GB');
+            }
+        },
+        {
+            field: 'ts_departure',
+            headerName: 'Timestamp Departure',
+            filter: 'agDateColumnFilter',
+            minWidth: 250,
+            sortable: true,
+            filterParams: {
+                browserDatePicker: true,
+                comparator: function (filterLocalDateAtMidnight, cellValue) {
+                    if (!cellValue) return -1;
+                    const cellDate = new Date(cellValue);
+                    const cellDateOnly = new Date(cellDate.getFullYear(), cellDate.getMonth(), cellDate.getDate());
+                    if (cellDateOnly < filterLocalDateAtMidnight) return -1;
+                    if (cellDateOnly > filterLocalDateAtMidnight) return 1;
+                    return 0;
+                }
+            },
+            valueFormatter: (params) => {
+                if (!params.value) return '';
+                const d = new Date(params.value);
+                return d.toLocaleDateString('en-GB') + ' ' + d.toLocaleTimeString('en-GB');
+            }
+        },
+        {
+            field: 'ts_arrived',
+            headerName: 'Timestamp Arrived',
+            filter: 'agDateColumnFilter',
+            minWidth: 250,
+            sortable: true,
+            filterParams: {
+                browserDatePicker: true,
+                comparator: function (filterLocalDateAtMidnight, cellValue) {
+                    if (!cellValue) return -1;
+                    const cellDate = new Date(cellValue);
+                    const cellDateOnly = new Date(cellDate.getFullYear(), cellDate.getMonth(), cellDate.getDate());
+                    if (cellDateOnly < filterLocalDateAtMidnight) return -1;
+                    if (cellDateOnly > filterLocalDateAtMidnight) return 1;
+                    return 0;
+                }
+            },
+            valueFormatter: (params) => {
+                if (!params.value) return '';
+                const d = new Date(params.value);
+                return d.toLocaleDateString('en-GB') + ' ' + d.toLocaleTimeString('en-GB');
+            }
+        },
+        { field: 'detail_issue_type', headerName: 'Detail Issue Type', sortable: true, filter: true, minWidth: 200 },
+        { field: 'closed_by', headerName: 'Closed By', sortable: true, filter: true, minWidth: 200 },
     ];
 
     const gridOptions = {

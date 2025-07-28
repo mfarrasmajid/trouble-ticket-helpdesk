@@ -72,7 +72,7 @@
                         <!--end:Menu link-->
                     </div>
                     <!--end:Menu item-->
-                    <!--begin:Menu item-->
+                    {{-- <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link @if (($path_current[0] == 'admin') && (($path_current[1] == 'manage_airflow_table') || ($path_current[1] == 'detail_airflow_table'))) active @endif" href="{{ url('/admin/manage_airflow_table') }}">
@@ -83,7 +83,7 @@
                         </a>
                         <!--end:Menu link-->
                     </div>
-                    <!--end:Menu item-->
+                    <!--end:Menu item--> --}}
                 </div>
                 <!--end:Menu sub-->
             </div>

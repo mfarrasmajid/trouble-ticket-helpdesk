@@ -86,7 +86,7 @@ class ApiController extends Controller
             $query->orderBy($sort['colId'], $sort['sort']);
         }
 
-        if (!str_contains(session()->get('user')->privilege, 'ADMIN')){
+        if (str_contains(session()->get('user')->privilege, 'USER')){
             $explode = explode(',', session()->get('user')->mitra_om);
             if (count($explode) == 0){
                 $query->where('mitra_om', NULL);
@@ -113,7 +113,7 @@ class ApiController extends Controller
         // Get full count (unfiltered)
         $totalAll = DB::connection('pgsql2')->table('mart_om_troubleticketcomp');
 
-        if (!str_contains(session()->get('user')->privilege, 'ADMIN')){
+        if (str_contains(session()->get('user')->privilege, 'USER')){
             $explode = explode(',', session()->get('user')->mitra_om);
             if (count($explode) == 0){
                 $totalAll->where('mitra_om', NULL);
@@ -219,7 +219,7 @@ class ApiController extends Controller
             $query->orderBy($sort['colId'], $sort['sort']);
         }
 
-        if (!str_contains(session()->get('user')->privilege, 'ADMIN')){
+        if (str_contains(session()->get('user')->privilege, 'USER')){
             $explode = explode(',', session()->get('user')->mitra_om);
             if (count($explode) == 0){
                 $query->where('mitra_om', NULL);
@@ -271,7 +271,17 @@ class ApiController extends Controller
             "Fullname Engineer",
             "SLA Status",
             "MTTR",
-            "MTTR Hours"
+            "MTTR Hours",
+            "Creation",
+            "Tower ID",
+            "District City",
+            "Timestamp Need Assign",
+            "Timestamp On Progress",
+            "Timestamp Pickup",
+            "Timestamp Departure",
+            "Timestamp Arrived",
+            "Detail Issue Type",
+            "Closed By",
         ];
 
         $headers = [
@@ -309,7 +319,17 @@ class ApiController extends Controller
             "engineer",
             "sla_status",
             "mttr",
-            "mttr_hours"
+            "mttr_hours",
+            "creation",
+            "tower_id",
+            "disctrict_city",
+            "ts_need_assign",
+            "ts_on_progress",
+            "ts_pickup",
+            "ts_departure",
+            "ts_arrived",
+            "detail_issue_type",
+            "closed_by",
         ];
 
         $users = $query->get($headers);
@@ -422,7 +442,7 @@ class ApiController extends Controller
             $query->orderBy($sort['colId'], $sort['sort']);
         }
 
-        if (!str_contains(session()->get('user')->privilege, 'ADMIN')){
+        if (str_contains(session()->get('user')->privilege, 'USER')){
             $explode = explode(',', session()->get('user')->mitra_om);
             if (count($explode) == 0){
                 $query->where('mitra_om', NULL);
@@ -449,7 +469,7 @@ class ApiController extends Controller
         // Get full count (unfiltered)
         $totalAll = DB::connection('pgsql2')->table('mart_om_maintenanceorder');
 
-        if (!str_contains(session()->get('user')->privilege, 'ADMIN')){
+        if (str_contains(session()->get('user')->privilege, 'USER')){
             $explode = explode(',', session()->get('user')->mitra_om);
             if (count($explode) == 0){
                 $totalAll->where('mitra_om', NULL);
@@ -555,7 +575,7 @@ class ApiController extends Controller
             $query->orderBy($sort['colId'], $sort['sort']);
         }
 
-        if (!str_contains(session()->get('user')->privilege, 'ADMIN')){
+        if (str_contains(session()->get('user')->privilege, 'USER')){
             $explode = explode(',', session()->get('user')->mitra_om);
             if (count($explode) == 0){
                 $query->where('mitra_om', NULL);
@@ -602,7 +622,29 @@ class ApiController extends Controller
             "Engineer",
             "District or City",
             "Area",
-            "Batch",];
+            "Batch",
+            "Year",
+            "Funcloc",
+            "Site ID Tenant",
+            "MO Type",
+            "Type",
+            "Visitor Permit",
+            "Province",
+            "Address",
+            "Maintenance Zone",
+            "Lat Long",
+            "Kode Tipe Site",
+            "Portofolio",
+            "Return Schedule Notes",
+            "Timestamp Request Schedule",
+            "Order Numner",
+            "MP Number",
+            "MI Number",
+            "PR Reference",
+            "PO Reference",
+            "BAPP Number",
+            "BAST Number",
+            "GR Status"];
 
         $headers = [
             "status",
@@ -634,7 +676,30 @@ class ApiController extends Controller
             "engineer",
             "district_or_city",
             "area",
-            "batch",];
+            "batch",
+            "year",
+            "funcloc",
+            "site_id_tenant",
+            "mo_type",
+            "type",
+            "visitor_permit",
+            "province",
+            "address",
+            "maintenance_zone",
+            "lat_long",
+            "kode_tipe_site",
+            "portofolio",
+            "return_schedule_notes",
+            "ts_request_schedule",
+            "order_number",
+            "mp_number",
+            "mi_number",
+            "pr_reference",
+            "po_reference",
+            "bapp_number",
+            "bast_number",
+            "gr_status"
+        ];
 
         $users = $query->get($headers);
 

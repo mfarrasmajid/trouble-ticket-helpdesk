@@ -66,7 +66,7 @@
                 <!--begin::Separator-->
                 <div class="separator separator-dashed my-3"></div>
                 <!--end::Separator-->
-                <!--begin::Item-->
+                {{-- <!--begin::Item-->
                 <div class="d-flex flex-stack">
                     <!--begin::Title-->
                     <a href="{{ url('/admin/manage_airflow_table')}}" class="text-danger opacity-75-hover fs-6 fw-semibold">Manage Airflow Table</a>
@@ -80,7 +80,7 @@
                 <!--end::Item-->
                 <!--begin::Separator-->
                 <div class="separator separator-dashed my-3"></div>
-                <!--end::Separator-->
+                <!--end::Separator--> --}}
             </div>
             <!--end::Body-->
         </div>
