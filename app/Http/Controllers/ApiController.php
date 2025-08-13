@@ -38,17 +38,17 @@ class ApiController extends Controller
 
                     if ($filterType === 'text') {
                         if ($type === 'contains') {
-                            $q->$clause($field, 'like', "%$value%");
+                            $q->$clause(\DB::raw("LOWER($field)"), 'like', '%' . strtolower($value) . '%');
                         } elseif ($type === 'notContains') {
-                            $q->$clause($field, 'not like', "%$value%");
+                            $q->$clause(\DB::raw("LOWER($field)"), 'not like', '%' . strtolower($value) . '%');
                         } elseif ($type === 'equals') {
-                            $q->$clause($field, '=', $value);
+                            $q->$clause(\DB::raw("LOWER($field)"), '=', strtolower($value));
                         } elseif ($type === 'notEqual') {
-                            $q->$clause($field, '!=', $value);
+                            $q->$clause(\DB::raw("LOWER($field)"), '!=', strtolower($value));
                         } elseif ($type === 'startsWith') {
-                            $q->$clause($field, 'like', "$value%");
+                            $q->$clause(\DB::raw("LOWER($field)"), 'like', strtolower($value) . '%');
                         } elseif ($type === 'endsWith') {
-                            $q->$clause($field, 'like', "%$value");
+                            $q->$clause(\DB::raw("LOWER($field)"), 'like', '%' . strtolower($value));
                         } elseif ($type === 'blank') {
                             $q->$clause($field, '=', NULL);
                         } elseif ($type === 'notBlank'){
@@ -171,17 +171,17 @@ class ApiController extends Controller
 
                     if ($filterType === 'text') {
                         if ($type === 'contains') {
-                            $q->$clause($field, 'like', "%$value%");
+                            $q->$clause(\DB::raw("LOWER($field)"), 'like', '%' . strtolower($value) . '%');
                         } elseif ($type === 'notContains') {
-                            $q->$clause($field, 'not like', "%$value%");
+                            $q->$clause(\DB::raw("LOWER($field)"), 'not like', '%' . strtolower($value) . '%');
                         } elseif ($type === 'equals') {
-                            $q->$clause($field, '=', $value);
+                            $q->$clause(\DB::raw("LOWER($field)"), '=', strtolower($value));
                         } elseif ($type === 'notEqual') {
-                            $q->$clause($field, '!=', $value);
+                            $q->$clause(\DB::raw("LOWER($field)"), '!=', strtolower($value));
                         } elseif ($type === 'startsWith') {
-                            $q->$clause($field, 'like', "$value%");
+                            $q->$clause(\DB::raw("LOWER($field)"), 'like', strtolower($value) . '%');
                         } elseif ($type === 'endsWith') {
-                            $q->$clause($field, 'like', "%$value");
+                            $q->$clause(\DB::raw("LOWER($field)"), 'like', '%' . strtolower($value));
                         } elseif ($type === 'blank') {
                             $q->$clause($field, '=', NULL);
                         } elseif ($type === 'notBlank'){
@@ -394,17 +394,17 @@ class ApiController extends Controller
 
                     if ($filterType === 'text') {
                         if ($type === 'contains') {
-                            $q->$clause($field, 'like', "%$value%");
+                            $q->$clause(\DB::raw("LOWER($field)"), 'like', '%' . strtolower($value) . '%');
                         } elseif ($type === 'notContains') {
-                            $q->$clause($field, 'not like', "%$value%");
+                            $q->$clause(\DB::raw("LOWER($field)"), 'not like', '%' . strtolower($value) . '%');
                         } elseif ($type === 'equals') {
-                            $q->$clause($field, '=', $value);
+                            $q->$clause(\DB::raw("LOWER($field)"), '=', strtolower($value));
                         } elseif ($type === 'notEqual') {
-                            $q->$clause($field, '!=', $value);
+                            $q->$clause(\DB::raw("LOWER($field)"), '!=', strtolower($value));
                         } elseif ($type === 'startsWith') {
-                            $q->$clause($field, 'like', "$value%");
+                            $q->$clause(\DB::raw("LOWER($field)"), 'like', strtolower($value) . '%');
                         } elseif ($type === 'endsWith') {
-                            $q->$clause($field, 'like', "%$value");
+                            $q->$clause(\DB::raw("LOWER($field)"), 'like', '%' . strtolower($value));
                         } elseif ($type === 'blank') {
                             $q->$clause($field, '=', NULL);
                         } elseif ($type === 'notBlank'){
@@ -527,17 +527,17 @@ class ApiController extends Controller
 
                     if ($filterType === 'text') {
                         if ($type === 'contains') {
-                            $q->$clause($field, 'like', "%$value%");
+                            $q->$clause(\DB::raw("LOWER($field)"), 'like', '%' . strtolower($value) . '%');
                         } elseif ($type === 'notContains') {
-                            $q->$clause($field, 'not like', "%$value%");
+                            $q->$clause(\DB::raw("LOWER($field)"), 'not like', '%' . strtolower($value) . '%');
                         } elseif ($type === 'equals') {
-                            $q->$clause($field, '=', $value);
+                            $q->$clause(\DB::raw("LOWER($field)"), '=', strtolower($value));
                         } elseif ($type === 'notEqual') {
-                            $q->$clause($field, '!=', $value);
+                            $q->$clause(\DB::raw("LOWER($field)"), '!=', strtolower($value));
                         } elseif ($type === 'startsWith') {
-                            $q->$clause($field, 'like', "$value%");
+                            $q->$clause(\DB::raw("LOWER($field)"), 'like', strtolower($value) . '%');
                         } elseif ($type === 'endsWith') {
-                            $q->$clause($field, 'like', "%$value");
+                            $q->$clause(\DB::raw("LOWER($field)"), 'like', '%' . strtolower($value));
                         } elseif ($type === 'blank') {
                             $q->$clause($field, '=', NULL);
                         } elseif ($type === 'notBlank'){
