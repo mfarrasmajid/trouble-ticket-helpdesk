@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://digital.mitratel.co.id'],
+    'allowed_origins' => ['https://digital.mitratel.co.id', 'http://localhost'],
 
     'allowed_headers' => ['*'],
 
