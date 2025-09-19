@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class AuthController extends Controller
 {
@@ -18,6 +19,24 @@ class AuthController extends Controller
     }
 
     public function submit_login (Request $request){
+        $request->validate([
+            'cf-turnstile-response' => ['required'], // token dari widget
+        ], [
+            'cf-turnstile-response.required' => 'Captcha wajib diisi.',
+        ]);
+
+        $verify = Http::asForm()->post('https://challenges.cloudflare.com/turnstile/v0/siteverify', [
+            'secret'   => config('services.turnstile.secret'),
+            'response' => $request->input('cf-turnstile-response'),
+            'remoteip' => $request->ip(),
+        ])->json();
+
+        if (!($verify['success'] ?? false)) {
+            return back()
+                ->withErrors(['cf_turnstile' => 'Verifikasi captcha gagal.'])
+                ->withInput();
+        }
+        
         $input = $request->all();
         $datetime = date('Y-m-d H:i:s');
         $username = $input['username'];
