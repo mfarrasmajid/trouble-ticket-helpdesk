@@ -46,6 +46,7 @@
                             <!--end::Subtitle=-->
                         </div>
                         <!--begin::Heading-->
+
                         @if (session('error'))
                         <p class="text-danger fs-6 mb-5">{{ session('error') }}</p>
                         @endif
@@ -70,6 +71,7 @@
                             <!--end::Link-->
                         </div>
                         <!--end::Wrapper-->
+                        <div class="cf-turnstile" data-sitekey="{{ config('services.turnstile.sitekey') }}"></div>
                         <!--begin::Submit button-->
                         <div class="d-grid mb-10">
                             <button type="submit" id="kt_sign_in_submit" class="btn btn-danger">
@@ -116,6 +118,7 @@
 @stop
 
 @section('scripts')
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
     var KTSigninGeneral = (function () {
     var e, t, i;
