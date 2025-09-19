@@ -19,11 +19,11 @@ class AuthController extends Controller
     }
 
     public function submit_login (Request $request){
-        $request->validate([
-            'cf-turnstile-response' => ['required'], // token dari widget
-        ], [
-            'cf-turnstile-response.required' => 'Captcha wajib diisi.',
-        ]);
+        // $request->validate([
+        //     'cf-turnstile-response' => ['required'], // token dari widget
+        // ], [
+        //     'cf-turnstile-response.required' => 'Captcha wajib diisi.',
+        // ]);
 
         $verify = Http::asForm()->post('https://challenges.cloudflare.com/turnstile/v0/siteverify', [
             'secret'   => config('services.turnstile.secret'),
