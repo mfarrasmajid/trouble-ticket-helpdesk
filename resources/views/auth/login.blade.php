@@ -50,6 +50,7 @@
                         @if (session('error'))
                         <p class="text-danger fs-6 mb-5">{{ session('error') }}</p>
                         @endif
+                        @error('cf_turnstile') <div class="text-danger fs-6 mb-5">{{ $message }}</div> @enderror
                         <!--begin::Input group=-->
                         <div class="fv-row mb-8">
                             <!--begin::Email-->
