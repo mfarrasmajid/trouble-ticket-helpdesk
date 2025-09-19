@@ -8,4 +8,5 @@
 
         'APIV2_URL' => env('APIV2_URL', null),
         'APIV2_KEY' => env('APIV2_KEY', null),
+        'ALLOWED_ORIGINS' => env('ALLOWED_ORIGINS', null),
     ];

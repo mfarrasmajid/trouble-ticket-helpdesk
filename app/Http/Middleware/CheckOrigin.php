@@ -21,7 +21,7 @@ class CheckOrigin
             return $next($request);
         }
 
-        $allowed = array_map('trim', explode(',', env('ALLOWED_ORIGINS', 'https://digital.mitratel.co.id')));
+        $allowed = array_map('trim', explode(',', \Config::get('values.ALLOWED_ORIGINS', 'https://digital.mitratel.co.id')));
         $origin  = $request->headers->get('origin') ?: $request->headers->get('referer');
 
         if (!$origin) {
