@@ -68,5 +68,7 @@ class Kernel extends HttpKernel
         'ceklogin' => \App\Http\Middleware\CekLogin::class,
         'cekadmin' => \App\Http\Middleware\CekAdmin::class,
         'cekdwh' => \App\Http\Middleware\CekDWH::class,
+        
+        'origin.whitelist' => \App\Http\Middleware\CheckOrigin::class,
     ];
 }

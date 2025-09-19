@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/login', 'AuthController@login')->name('login');
-Route::post('/login', 'AuthController@submit_login');
+Route::post('/login', 'AuthController@submit_login')->middleware(['origin.whitelist']);;
 Route::get('/logout', 'AuthController@logout')->name('logout');
 Route::get('/', 'MainController@portal')->name('portal');
 
@@ -45,10 +45,10 @@ Route::prefix('admin')->group(function () {
 });
 Route::prefix('api')->group(function() {
     Route::prefix('helpdesk')->group(function () {
-        Route::get('/get_list_trouble_ticket', 'ApiController@get_list_trouble_ticket');
-        Route::post('/export_trouble_ticket', 'ApiController@export_trouble_ticket');
-        Route::get('/get_list_maintenance_order', 'ApiController@get_list_maintenance_order');
-        Route::post('/export_maintenance_order', 'ApiController@export_maintenance_order');
+        Route::get('/get_list_trouble_ticket', 'ApiController@get_list_trouble_ticket')->middleware(['origin.whitelist']);
+        Route::post('/export_trouble_ticket', 'ApiController@export_trouble_ticket')->middleware(['origin.whitelist']);
+        Route::get('/get_list_maintenance_order', 'ApiController@get_list_maintenance_order')->middleware(['origin.whitelist']);
+        Route::post('/export_maintenance_order', 'ApiController@export_maintenance_order')->middleware(['origin.whitelist']);
     });
     // Route::prefix('dwh')->group(function () {
     //     Route::post('/get_list_airflow_logs/{kategori}', 'DWHController@get_list_airflow_logs');
