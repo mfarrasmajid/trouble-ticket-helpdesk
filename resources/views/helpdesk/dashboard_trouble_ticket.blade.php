@@ -394,6 +394,7 @@
         { field: 'closed_by', headerName: 'Closed By', sortable: true, filter: true, minWidth: 200 },
         { field: 'priority_mtel', headerName: 'Priority Mtel', sortable: true, filter: true, minWidth: 200 },
         { field: 'detail_sla_status', headerName: 'Detail SLA Status', sortable: true, filter: true, minWidth: 200 },
+        { field: 'tt_source', headerName: 'TT Source', sortable: true, filter: true, minWidth: 200 },
     ];
 
     const gridOptions = {
