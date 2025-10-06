@@ -238,7 +238,7 @@ class ApiController extends Controller
             "Service Level Agreement","Service Level Agreement Status","Actual Category","TT From","TT ID AmpuhC",
             "Class of Service","Maintenance Zone","Fullname Engineer","SLA Status","MTTR","MTTR Hours","Creation",
             "Tower ID","District City","Timestamp Need Assign","Timestamp On Progress","Timestamp Pickup",
-            "Timestamp Departure","Timestamp Arrived","Detail Issue Type","Closed By", "Severity Mtel", "Detail SLA Status",
+            "Timestamp Departure","Timestamp Arrived","Detail Issue Type","Closed By", "Priority Mtel", "Detail SLA Status",
         ];
 
         // Column keys to fetch from DB
@@ -248,7 +248,7 @@ class ApiController extends Controller
             "tt_ant_id","tenant_id","sid_tenant","tanggal_request_ant","ts_resolved","service_level_agreement",
             "agreement_status","actual_category","reference","tt_id_ampuhc","class_of_service","maintenance_zone",
             "engineer","sla_status","mttr","mttr_hours","creation","tower_id","disctrict_city","ts_need_assign",
-            "ts_on_progress","ts_pickup","ts_departure","ts_arrived","detail_issue_type","closed_by", "severity_mtel", "detail_sla_status",
+            "ts_on_progress","ts_pickup","ts_departure","ts_arrived","detail_issue_type","closed_by", "priority_mtel", "detail_sla_status",
         ];
 
         // Fetch rows

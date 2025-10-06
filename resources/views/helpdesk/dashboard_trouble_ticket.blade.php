@@ -392,7 +392,7 @@
         },
         { field: 'detail_issue_type', headerName: 'Detail Issue Type', sortable: true, filter: true, minWidth: 200 },
         { field: 'closed_by', headerName: 'Closed By', sortable: true, filter: true, minWidth: 200 },
-        { field: 'severity_mtel', headerName: 'Severity Mtel', sortable: true, filter: true, minWidth: 200 },
+        { field: 'priority_mtel', headerName: 'Priority Mtel', sortable: true, filter: true, minWidth: 200 },
         { field: 'detail_sla_status', headerName: 'Detail SLA Status', sortable: true, filter: true, minWidth: 200 },
     ];
 
