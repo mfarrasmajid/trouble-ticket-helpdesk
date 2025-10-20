@@ -32,7 +32,7 @@ class AdminController extends Controller
 
     public function detail_users(Request $request, $id = NULL){
         $data['privilege'] = DB::table('master_privilege')->select('*')->get();
-        $data['mitra_om'] = DB::connection('pgsql2')->table('mart_om_troubleticketcomp')->select(DB::raw("DISTINCT(mitra_om) as mitra_om"))->get();
+        $data['mitra_om'] = DB::connection('pgsql2')->table('new_mart_om_troubleticketcomp')->select(DB::raw("DISTINCT(mitra_om) as mitra_om"))->get();
         if ($id != NULL){
             $data['u'] = DB::table('users')->select('*')->where('id', $id)->get();
             if (count($data['u']) > 0){

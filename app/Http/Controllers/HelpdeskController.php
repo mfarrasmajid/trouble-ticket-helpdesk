@@ -16,7 +16,7 @@ class HelpdeskController extends Controller
         return view('helpdesk.dashboard_portal');
     }
     public function dashboard_trouble_ticket(Request $request){
-        $data['latest_modified'] = DB::connection('pgsql2')->table('mart_om_troubleticketcomp')->select('modified')->orderBy('modified', 'DESC')->limit(1)->get();
+        $data['latest_modified'] = DB::connection('pgsql2')->table('new_mart_om_troubleticketcomp')->select('modified')->orderBy('modified', 'DESC')->limit(1)->get();
         if (count($data['latest_modified']) > 0){
             $data['latest_modified'] = $data['latest_modified']->first()->modified;
         } else {
@@ -26,7 +26,7 @@ class HelpdeskController extends Controller
     }
     public function dashboard_maintenance_order(Request $request){
 
-        $data['latest_modified'] = DB::connection('pgsql2')->table('mart_om_maintenanceorder')->select('modified')->orderBy('modified', 'DESC')->limit(1)->get();
+        $data['latest_modified'] = DB::connection('pgsql2')->table('new_mart_om_maintenanceorder')->select('modified')->orderBy('modified', 'DESC')->limit(1)->get();
         if (count($data['latest_modified']) > 0){
             $data['latest_modified'] = $data['latest_modified']->first()->modified;
         } else {

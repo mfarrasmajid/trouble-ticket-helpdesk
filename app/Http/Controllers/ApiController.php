@@ -13,7 +13,7 @@ class ApiController extends Controller
 {
     public function get_list_trouble_ticket(Request $request)
     {
-        $query = DB::connection('pgsql2')->table('mart_om_troubleticketcomp');
+        $query = DB::connection('pgsql2')->table('new_mart_om_troubleticketcomp');
 
         $filterModel = json_decode($request->input('filterModel', '{}'), true);
         $sortModel = json_decode($request->input('sortModel', '[]'), true);
@@ -113,7 +113,7 @@ class ApiController extends Controller
         $totalFiltered = $filteredQuery->count();
 
         // Get full count (unfiltered)
-        $totalAll = DB::connection('pgsql2')->table('mart_om_troubleticketcomp');
+        $totalAll = DB::connection('pgsql2')->table('new_mart_om_troubleticketcomp');
 
         if (str_contains(session()->get('user')->privilege, 'USER')){
             $explode = explode(',', session()->get('user')->mitra_om);
@@ -146,7 +146,7 @@ class ApiController extends Controller
 
     public function export_trouble_ticket(Request $request)
     {
-        $query = DB::connection('pgsql2')->table('mart_om_troubleticketcomp');
+        $query = DB::connection('pgsql2')->table('new_mart_om_troubleticketcomp');
 
         $filterModel = json_decode($request->input('filterModel', '{}'), true);
         $sortModel   = json_decode($request->input('sortModel', '[]'), true);
@@ -291,7 +291,7 @@ class ApiController extends Controller
 
         // latest modified suffix
         $latest_modified = DB::connection('pgsql2')
-            ->table('mart_om_troubleticketcomp')
+            ->table('new_mart_om_troubleticketcomp')
             ->select('modified')
             ->orderBy('modified', 'desc')
             ->limit(1)
@@ -309,7 +309,7 @@ class ApiController extends Controller
 
     public function get_list_maintenance_order(Request $request)
     {
-        $query = DB::connection('pgsql2')->table('mart_om_maintenanceorder');
+        $query = DB::connection('pgsql2')->table('new_mart_om_maintenanceorder');
 
         $filterModel = json_decode($request->input('filterModel', '{}'), true);
         $sortModel = json_decode($request->input('sortModel', '[]'), true);
@@ -409,7 +409,7 @@ class ApiController extends Controller
         $totalFiltered = $filteredQuery->count();
 
         // Get full count (unfiltered)
-        $totalAll = DB::connection('pgsql2')->table('mart_om_maintenanceorder');
+        $totalAll = DB::connection('pgsql2')->table('new_mart_om_maintenanceorder');
 
         if (str_contains(session()->get('user')->privilege, 'USER')){
             $explode = explode(',', session()->get('user')->mitra_om);
@@ -442,7 +442,7 @@ class ApiController extends Controller
 
     public function export_maintenance_order(Request $request)
     {
-        $query = DB::connection('pgsql2')->table('mart_om_maintenanceorder');
+        $query = DB::connection('pgsql2')->table('new_mart_om_maintenanceorder');
 
         $filterModel = json_decode($request->input('filterModel', '{}'), true);
         $sortModel   = json_decode($request->input('sortModel', '[]'), true);
@@ -579,7 +579,7 @@ class ApiController extends Controller
         }
 
         $latest_modified = DB::connection('pgsql2')
-            ->table('mart_om_maintenanceorder')
+            ->table('new_mart_om_maintenanceorder')
             ->select('modified')
             ->orderBy('modified', 'desc')
             ->limit(1)
